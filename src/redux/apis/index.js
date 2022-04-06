@@ -1,5 +1,8 @@
 import axios from "axios";
 
+//Add a token here.
+const token = "";
+
 const instance = axios.create({
     baseURL: 'https://op.digesto.com.br/api/',
     url: 'https://op.digesto.com.br/api/',
@@ -7,7 +10,7 @@ const instance = axios.create({
     timeout: 20000,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 5af8ba4c-43e3-4361-9e9c-f73458ab6a5b',
+        'Authorization': 'Bearer '+token,
     },
 })
 export const apiGetProcess = async (id) => {
