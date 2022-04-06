@@ -64,9 +64,9 @@ Ao adicionar um valor considerado inválido no campo de busca
  ![Alt text](tela_processos_mobile.png "Tela Processo mobile")
  Tela de processos.
 
- ## Complicações de produção com erros CORS.
+## Complicações de produção com erros CORS.
 
- Ao enviar as requisições via API sem a devida altorização do servidor acarretou os
+ Ao enviar as requisições via API sem a devida autorização do servidor acarretou os
  Erros CORS.
 
  Uma vez que a aplicação utiliza a API externa: https://op.digesto.com.br/api/ para 
