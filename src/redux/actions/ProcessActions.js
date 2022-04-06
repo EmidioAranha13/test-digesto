@@ -18,10 +18,11 @@ export const hideLoadingScreen = () => ({
  * makes a call to saga for try to get the specific process.
  * @param {String} id - cnj number
  */
-export const appGetProcess = (id) => ({
+export const appGetProcess = (id, func) => ({
     type: type.APP_GET_PROCESS,
     payload: {
         id,
+        func,
     }
 });
 

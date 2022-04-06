@@ -1,0 +1,35 @@
+.my-navbar {
+    justify-content: center;
+    align-items: center;
+    width: 100vw !important;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    height: calc(min(100px, 25vh));
+    position: absolute;
+    top: 0;
+}
+
+.navbar-nav {
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 30px;
+}
+
+.nav-item {
+    cursor: pointer;
+}
+
+.nav-link {
+    font-family: sans-serif;
+    font-size: 18px;
+
+}
+
+.App-logo{
+    width: calc(max(100px, 13rem));
+}
+
+.active {
+    border-bottom: 2px solid white;
+}

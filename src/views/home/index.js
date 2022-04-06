@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './index.css';
 import '../../bootstrap.min.css';
 import {ReactComponent as DigestoLogo} from '../../assets/logo-home-digesto.svg';
@@ -17,6 +18,7 @@ export const Home = () => {
     const withAlert = useSelector(state=> state.ProcessReducer.alert);          //shows the alert message
     const error = useSelector(state=> state.ProcessReducer.error);      //message that describe the error
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     /**
      * This function handle with changes in search field.
@@ -35,14 +37,14 @@ export const Home = () => {
         if(validCNJ.test(cnj)){
             setValid(true);
             //aux = cnj.replace('-','').replace('.','').replace('.','').replace('.','').replace('.','');
-            dispatch(appGetProcess(cnj));
+            dispatch(appGetProcess(cnj, navigate));
         }else{
             setValid(false);
         }
     };
 
     return(
-        <div className="body">
+        <div className="body-home">
             {isLoading ? (
                 <Loading/>
             ):(

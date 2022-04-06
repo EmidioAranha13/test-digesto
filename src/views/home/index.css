@@ -6,7 +6,7 @@
     --dark-red: #920606;
 }
 
-.body {
+.body-home {
     display: flex;
     flex-direction: column;
     width: 100%;

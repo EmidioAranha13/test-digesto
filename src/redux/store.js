@@ -5,17 +5,13 @@ import rootSaga from './sagas/index';
 import { devToolsEnhancer } from "redux-devtools-extension";
 
 
+
 const sagaMiddleware = createSagaMiddleware();
 const store = compose(
     applyMiddleware(sagaMiddleware),
     devToolsEnhancer(),
 )(createStore)(rootReducer);
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(rootSaga);
 
 export default store;
-
-// const sagaMiddleware = createSagaMiddleware()
-// const store = createStore(rootReducer,applyMiddleware(sagaMiddleware))
-// sagaMiddleware.run(rootSaga)
-// export default store;

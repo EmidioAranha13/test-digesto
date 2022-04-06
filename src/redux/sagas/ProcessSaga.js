@@ -19,7 +19,8 @@ import {apiGetProcess} from '../apis/index';
  * @param {Object} param0 - the cnj.
  */
 function* sagaGetProcess({ payload }) {
-    const {id} = payload;
+    const {id, func} = payload;
+    let page = "/";
     try {
         yield put(showLoadingScreen());
         let data = yield call(apiGetProcess, id);
@@ -28,13 +29,15 @@ function* sagaGetProcess({ payload }) {
                 yield put(appGetProcessDidFailure(data.status_op));
             }else{
                 yield put(appGetProcessDidSuccess(data));
-                yield put(push("/Processo"));
+                page = "/Processo";
             }
         }
     } catch (error) {
-        yield put(appGetProcessDidFailure(error));
+        console.log(error);
+        yield put(appGetProcessDidFailure("Algo deu errado. Tente novamente."));
     }finally{
         yield put(hideLoadingScreen());
+        yield func(page);
     }
 }
 
