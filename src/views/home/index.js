@@ -1,18 +1,22 @@
-import React, {useState} from "react";
-// import {useNavigate} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './index.css';
 import '../../bootstrap.min.css';
 import {ReactComponent as DigestoLogo} from '../../assets/logo-home-digesto.svg';
-import { cnjMask, Loading} from "../../components";
+import { Alert, cnjMask, Loading} from '../../components';
+import { appGetProcess } from '../../redux/actions/ProcessActions';
 
 /**
  * Function responsible for create home page.
  */
 export const Home = () => {
 
-    const [cnj, setCnj] = useState("");                    //Cnj number
-    const [valid, setValid] = useState(true);              //cnj validator 
-    const [isLoading, setIsloading] = useState(false);     //shows the loading screen
+    const [cnj, setCnj] = useState("");                                                      //Cnj number
+    const [valid, setValid] = useState(true);                                             //cnj validator 
+    const isLoading = useSelector(state=> state.ProcessReducer.isLoading);     //shows the loading screen
+    const withAlert = useSelector(state=> state.ProcessReducer.alert);          //shows the alert message
+    const error = useSelector(state=> state.ProcessReducer.error);      //message that describe the error
+    const dispatch = useDispatch();
 
     /**
      * This function handle with changes in search field.
@@ -29,8 +33,9 @@ export const Home = () => {
     const handleSubmit = () => {
         const validCNJ = new RegExp('[0-9]{7}-[0-9]{2}.[0-9]{4}.[0-9]{1}.[0-9]{2}.[0-9]{4}');
         if(validCNJ.test(cnj)){
-            setIsloading(true);
             setValid(true);
+            //aux = cnj.replace('-','').replace('.','').replace('.','').replace('.','').replace('.','');
+            dispatch(appGetProcess(cnj));
         }else{
             setValid(false);
         }
@@ -74,6 +79,7 @@ export const Home = () => {
                     </form>
                 </div>
             )}
+            {withAlert && <Alert error={error}/>}
         </div>
     );
 }

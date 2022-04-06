@@ -1,0 +1,14 @@
+.alert-ms {
+    width: 600px !important;
+    margin-top: 10px;
+}
+
+@media screen and (width < 600px) {
+    .alert-ms {
+        width: 100vw !important;
+        font-size: 14px;
+        margin-top: 10px;
+        position: absolute;
+        bottom: 0px;
+    }
+}
